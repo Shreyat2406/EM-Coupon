@@ -4,7 +4,7 @@ import "./App.css";
 const App = () => {
   const [selectedMeal, setSelectedMeal] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-
+  const [meals,setMeals] = useState([]);
   // Handle Meal Selection
   const handleMealChange = (event) => {
     const meal = event.target.value;
@@ -14,15 +14,20 @@ const App = () => {
   // Enable Editing
   const handleEdit = () => {
     setIsEditing(true);
+    setSelectedMeal("");
   };
+
 
   // Save the Selection
   const handleSave = () => {
     if (selectedMeal) {
-      alert(`Saved: ${selectedMeal}`);
+      console.log(`Saved: ${selectedMeal}`);
+      setMeals([...meals,selectedMeal])
+      console.log(meals)
       setIsEditing(false); // Disable editing after saving
+      
     } else {
-      alert("Please select a meal before saving.");
+      console.log("Please select a meal before saving.");
     }
   };
 
@@ -37,6 +42,7 @@ const App = () => {
 
       {/* Meal Selection Section */}
       <div className="meals">
+        
         {isEditing ? (
           <>
             <label className="meal-option">
@@ -44,6 +50,7 @@ const App = () => {
                 type="radio"
                 name="meal"
                 value="Breakfast"
+                disabled={meals.includes("Breakfast")}
                 onChange={handleMealChange}
               />
               <span className={selectedMeal === "Breakfast" ? "selected" : ""}>
@@ -55,6 +62,7 @@ const App = () => {
                 type="radio"
                 name="meal"
                 value="Lunch"
+                disabled={meals.includes("Lunch")}
                 onChange={handleMealChange}
               />
               <span className={selectedMeal === "Lunch" ? "selected" : ""}>
@@ -66,6 +74,7 @@ const App = () => {
                 type="radio"
                 name="meal"
                 value="Dinner"
+                disabled={meals.includes("Dinner")}
                 onChange={handleMealChange}
               />
               <span className={selectedMeal === "Dinner" ? "selected" : ""}>
