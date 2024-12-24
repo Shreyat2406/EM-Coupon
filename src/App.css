@@ -87,6 +87,7 @@ body {
   display: none;
 }
 
+
 .meal-option span {
   display: inline-block;
   padding: 10px 20px;
@@ -100,6 +101,10 @@ body {
 
 .meal-option span.selected {
   background-color: green;
+  color: white;
+}
+.meal-option input[type="radio"]:disabled +  span {
+  background-color: black;
   color: white;
 }
 

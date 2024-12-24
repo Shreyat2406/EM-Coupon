@@ -70,6 +70,10 @@ margin-top: 20px;
   background-color: green;
   color: white;
 }
+.options input[type="radio"]:disabled  + span {
+  background-color: black;
+  color: white;
+}
 
 .buttons {
   margin-top: 20px;
